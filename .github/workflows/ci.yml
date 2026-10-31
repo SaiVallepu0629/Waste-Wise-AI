@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - name: Install Python dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Run backend tests
+        run: python -m unittest discover -s Backend/tests -t . -v
+      - name: Compile backend
+        run: python -m compileall -q Backend
+      - name: Check Python dependencies
+        run: python -m pip check
+
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install Node dependencies
+        run: npm ci
+      - name: Build frontend
+        run: npm run build
+      - name: Lint frontend
+        run: npm run lint
+      - name: Audit Node dependencies
+        run: npm audit

@@ -1,0 +1,51 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage/
+htmlcov/
+
+# Local databases, SQLite journals, and backups
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+database-backups/
+backups/
+
+# Temporary files and logs
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.log
+*.swp
+*.swo
+*.orig
+*.rej
+
+# Local configuration and secrets
+.env
+.env.*
+
+# JavaScript dependencies and generated output
+node_modules/
+dist/
+dist-ssr/
+.vite/
+
+# Preserved, unused Vite starter project
+/frontend-starter/
+
+# Editor and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
