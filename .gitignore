@@ -1,6 +1,8 @@
 .venv/
 venv/
 __pycache__/
+.ipynb_checkpoints/
+.cache/
 *.py[cod]
 .pytest_cache/
 .mypy_cache/
@@ -8,6 +10,8 @@ __pycache__/
 .coverage
 coverage/
 htmlcov/
+build/
+*.egg-info/
 
 # Local databases, SQLite journals, and backups
 *.db
@@ -34,6 +38,14 @@ temp/
 # Local configuration and secrets
 .env
 .env.*
+credentials.json
+credentials.*.json
+secrets.json
+secrets.*.json
+*.pem
+*.key
+*.p12
+*.pfx
 
 # JavaScript dependencies and generated output
 node_modules/

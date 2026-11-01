@@ -4,6 +4,15 @@ WasteWise-AI is a food-inventory management dashboard for tracking manually
 managed stock, reviewing historical inventory snapshots, and surfacing clearly
 labeled expiry and discount guidance.
 
+## Objectives
+
+- Help users manage their own inventory while keeping imported historical
+  snapshots available for reference.
+- Make expiry-risk and discount guidance understandable, and distinguish
+  rule-based estimates and simulations from observed outcomes.
+- Provide demand-model results only when the available history supports a
+  meaningful evaluation.
+
 ## Features
 
 - React dashboard with inventory search, pagination, responsive charts, and
@@ -45,13 +54,20 @@ Backend/
   database_maintenance.py Verified backup and restore commands
 frontend/
   src/                    React dashboard and API client
+  public/                 Static frontend assets
 ml/
   artifacts/              Saved demand model
   data/raw/               Source datasets
   data/processed/         Derived analytics and simulations
   notebooks/              Model and data exploration
-data/                     Local SQLite database (ignored by Git)
+scripts/                  Project utility scripts
+data/                     Runtime SQLite database (ignored by Git)
 ```
+
+The unused `frontend-starter/` directory is excluded from the published
+repository. Build output, dependency folders, local databases, and secrets are
+also excluded by `.gitignore`; the model, notebooks, and project datasets are
+versioned.
 
 The application loads its existing model artifact and CSV datasets from `ml/`.
 They are not generated or retrained at startup.
@@ -248,9 +264,9 @@ target before switching traffic.
 
 ## Screenshots
 
-No screenshots are currently included. Add reviewed screenshots under
-`docs/screenshots/` and link them here before publishing. Use synthetic
-accounts and inventory; do not capture real email addresses or production data.
+Screenshots are not included yet. Add reviewed images under
+`docs/screenshots/` and link them here when available. Use synthetic accounts
+and inventory; do not capture real email addresses or production data.
 
 ## Tests and checks
 
@@ -281,5 +297,5 @@ pull requests.
   data under its terms.
 - Configure production secrets, HTTPS, durable storage, monitoring, and
   off-host backups before accepting real users.
-- Do not publish a cloud endpoint, repository, or secrets without explicit
-  owner approval.
+- Never put repository credentials, live service secrets, or private
+  deployment configuration in source control.
